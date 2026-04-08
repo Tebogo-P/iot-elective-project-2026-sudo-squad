@@ -41,7 +41,7 @@
 | [Nuyra Swanson] | [221290524] | [FrontEnd Developer] |
 | [Tlangelani Chauke] | [222520663] | [Database Administrator] |
 | [Confidence Khoza] | [222927402] | UI/UX and Documentation] |
-| [Matinisa] | [222527269] | [Hardware] |
+| [Matinisa Lubisi] | [222527269] | [Hardware] |
 
 ---
 
