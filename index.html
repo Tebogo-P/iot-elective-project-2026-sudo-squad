@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Smart Attendance System</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- TOP BAR -->
+        <header class="top-bar">
+
+            <div>
+                <h1>Smart Attendance System Dashboard</h1>
+                <p class="welcome-text">
+                    Real-Time RFID & Fingerprint Monitoring
+                </p>
+            </div>
+
+            <div class="clock-box">
+                <p id="liveDate">Loading date...</p>
+                <h3 id="liveClock">Loading time...</h3>
+            </div>
+
+        </header>
+
+        <!-- CARDS -->
+        <div class="cards">
+
+            <div class="card">
+                <h3>Total Scans</h3>
+                <p id="totalScans">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Present Today</h3>
+                <p id="presentToday">0</p>
+            </div>
+
+            <div class="card">
+                <h3>Access Denied</h3>
+                <p id="accessDenied">0</p>
+            </div>
+
+        </div>
+
+        <!-- DEVICE STATUS -->
+        <div class="device-section">
+
+            <div class="device-card online">
+                <h3>ESP32 Connection</h3>
+                <p id="serverStatus">ONLINE</p>
+            </div>
+
+            <div class="device-card online">
+                <h3>RFID Reader</h3>
+                <p>READY</p>
+            </div>
+
+            <div class="device-card online">
+                <h3>Fingerprint Sensor</h3>
+                <p>READY</p>
+            </div>
+
+            <div class="device-card warning">
+                <h3>Access Alerts</h3>
+                <p>Monitoring System Activity</p>
+            </div>
+
+        </div>
+
+        <!-- TABLE -->
+        <div class="table-section">
+
+            <h2>Attendance Logs</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Student Number</th>
+                        <th>Time</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody id="attendanceTableBody">
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <!-- LIVE CLOCK -->
+    <script>
+
+        function updateClock() {
+
+            const now = new Date();
+
+            document.getElementById("liveDate").innerHTML =
+                now.toDateString();
+
+            document.getElementById("liveClock").innerHTML =
+                now.toLocaleTimeString();
+        }
+
+        setInterval(updateClock, 1000);
+
+        updateClock();
+
+    </script>
+
+</body>
+</html>
