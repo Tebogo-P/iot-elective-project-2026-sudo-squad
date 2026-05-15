@@ -42,6 +42,7 @@
 | [Tlangelani Chauke] | [222520663] | [Database Administrator] |
 | [Confidence Khoza] | [222927402] | UI/UX and Documentation] |
 | [Matinisa Lubisi] | [222527269] | [Hardware] |
+| [Siphesihle Khinase] | [230926177] | [Hardware] |
 
 ---
 
