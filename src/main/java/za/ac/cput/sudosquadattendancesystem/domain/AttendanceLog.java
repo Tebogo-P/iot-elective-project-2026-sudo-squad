@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-
 import java.time.LocalDateTime;
+
 
 @Entity
 @Table(name = "attendance_logs")
@@ -35,4 +35,7 @@ public class AttendanceLog {
 
     @Column(name = "access_granted", nullable = false)
     private boolean accessGranted;
+
+    @Column(name = "student_name")
+    private String studentName;
 }
