@@ -119,7 +119,7 @@ programmed and simulated using an online website named Wokwi, which supports
 a majority of the system components which faccilitates the testing of the circuits 
 along with the commands before doing it with the real world system components.***
 
-![System command test image](Work in progress images/IoT work progress 4.jpeg)
+![System command test image](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20work%20progress%204.jpeg?raw=true)
 
 ### Step 2: [Step Title]
 > _Description of what was done._
