@@ -112,6 +112,20 @@ Hardware User Experience: We steered clear of intricate biometric sensors that r
 
 ## 🏭 Build Process (with photos)
 
+### Step 1: [C++ Components commands]
+
+***This was the first phase of the system where the system commands was
+programmed and simulated using an online website named Wokwi, which supports 
+a majority of the system components which faccilitates the testing of the circuits 
+along with the commands before doing it with the real world system.
+
+![Step 1 Photo](images/build_step1.jpg)
+
+### Step 2: [Step Title]
+> _Description of what was done._
+
+![Step 2 Photo](images/build_step2.jpg)
+
 ### Step 1: [Step Title]
 > _Description of what was done._
 
