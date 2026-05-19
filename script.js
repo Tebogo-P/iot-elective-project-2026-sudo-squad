@@ -92,8 +92,69 @@ async function fetchAttendanceLogs() {
     }
 }
 
+async function fetchStudents() {
+
+    const tableBody =
+        document.getElementById("studentsTableBody");
+
+    try {
+
+        const response = await fetch("http://localhost:8080/api/v1/students/enrolled");
+
+        if (!response.ok) {
+            throw new Error("Server Error");
+        }
+
+        const students = await response.json();
+
+        tableBody.innerHTML = "";
+
+        if (students.length === 0) {
+            tableBody.innerHTML = `
+                <tr>
+                    <td colspan="7" style="text-align: center; color: #999;">
+                        No enrolled students found.
+                    </td>
+                </tr>
+            `;
+            return;
+        }
+
+        students.forEach(student => {
+
+            const row = `
+                <tr>
+                    <td>${student.firstName}</td>
+                    <td>${student.lastName}</td>
+                    <td>${student.studentNumber}</td>
+                    <td>${student.email}</td>
+                    <td>${student.rfidTagId || "N/A"}</td>
+                    <td>${student.fingerprintId || "N/A"}</td>
+                    <td><span class="status-badge enrolled">Enrolled</span></td>
+                </tr>
+            `;
+
+            tableBody.innerHTML += row;
+        });
+
+    } catch (error) {
+
+        console.error(error);
+
+        tableBody.innerHTML = `
+            <tr>
+                <td colspan="7" style="text-align: center; color: #999;">
+                    Unable to load students.
+                </td>
+            </tr>
+        `;
+    }
+}
+
 // Load immediately
 fetchAttendanceLogs();
+fetchStudents();
 
 // Refresh every 5 seconds
 setInterval(fetchAttendanceLogs, 5000);
+setInterval(fetchStudents, 10000);
