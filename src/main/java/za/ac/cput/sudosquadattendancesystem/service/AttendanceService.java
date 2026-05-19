@@ -146,21 +146,12 @@ public class AttendanceService implements IAttendanceService {
                 .collect(Collectors.toList());
     }
 
-    /**
-     * Checks the student table for an enrolled record that matches either
-     * the RFID tag or fingerprint ID. This is dynamic — adding a new student
-     * to the DB automatically grants them access without a code change.
-     */
     private boolean validateCredentials(String rfidTag, Integer fingerprintId) {
-        boolean rfidValid        = rfidTag != null       && studentRepository.existsByRfidTagIdAndEnrolledTrue(rfidTag);
+        boolean rfidValid = rfidTag != null && studentRepository.existsByRfidTagIdAndEnrolledTrue(rfidTag);
         boolean fingerprintValid = fingerprintId != null && studentRepository.existsByFingerprintIdAndEnrolledTrue(fingerprintId);
         return rfidValid || fingerprintValid;
     }
 
-    /**
-     * Tries to find a student name to embed in the log row.
-     * Returns "Unknown" for unrecognised cards — useful for spotting intruders.
-     */
     private String resolveStudentName(String rfidTag, Integer fingerprintId) {
         if (rfidTag != null) {
             Optional<Student> byRfid = studentRepository.findByRfidTagId(rfidTag);
