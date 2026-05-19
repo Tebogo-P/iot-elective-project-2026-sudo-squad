@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8083/api/attendance/logs";
+const API_URL = "http://localhost:8080/api/v1/attendance/logs";
 
 async function fetchAttendanceLogs() {
 
@@ -27,22 +27,36 @@ async function fetchAttendanceLogs() {
         logs.forEach(log => {
 
             // Count stats
-            if (log.accessGranted) {
+            if (log.status === "PRESENT") {
                 presentToday++;
-            } else {
+            }
+
+            if (log.status === "DENIED") {
                 accessDenied++;
             }
 
-            // Create row
-            const statusText = log.accessGranted ? "PRESENT" : "DENIED";
-            const statusClass = log.accessGranted ? "present" : "denied";
+            // Status styling
+            let statusClass = "";
 
+            if (log.status === "PRESENT") {
+                statusClass = "present";
+            }
+            else if (log.status === "LATE") {
+                statusClass = "late";
+            }
+            else {
+                statusClass = "denied";
+            }
+
+            // Create row
             const row = `
                 <tr>
-                    <td>${log.studentName ?? "unknown"}</td>
-                    <td>${log.rfidTagId ?? "-"}</td>
-                    <td>${log.scanTimestamp}</td>
-                    <td class="${statusClass}">${statusText}</td>
+                    <td>${log.name}</td>
+                    <td>${log.studentNumber}</td>
+                    <td>${log.timestamp}</td>
+                    <td class="${statusClass}">
+                        ${log.status}
+                    </td>
                 </tr>
             `;
 

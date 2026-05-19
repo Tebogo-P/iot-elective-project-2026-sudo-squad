@@ -6,14 +6,17 @@ import org.springframework.stereotype.Service;
 import za.ac.cput.sudosquadattendancesystem.domain.AttendanceLog;
 import za.ac.cput.sudosquadattendancesystem.domain.HardwarePayload;
 import za.ac.cput.sudosquadattendancesystem.domain.Student;
+import za.ac.cput.sudosquadattendancesystem.dto.AttendanceLogDTO;
 import za.ac.cput.sudosquadattendancesystem.repository.AttendanceLogRepository;
 import za.ac.cput.sudosquadattendancesystem.repository.StudentRepository;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -22,6 +25,8 @@ public class AttendanceService implements IAttendanceService {
 
     private final AttendanceLogRepository attendanceLogRepository;
     private final StudentRepository       studentRepository;
+    
+    private static final DateTimeFormatter DATE_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
 
     @Override
     public AttendanceLog processScan(HardwarePayload payload) {
@@ -94,6 +99,51 @@ public class AttendanceService implements IAttendanceService {
     public void deleteLog(Long id) {
         attendanceLogRepository.deleteById(id);
         log.info("Log entry {} deleted", id);
+    }
+    
+    /**
+     * Convert AttendanceLog domain object to AttendanceLogDTO for frontend compatibility.
+     * Maps internal field names to frontend-expected field names.
+     */
+    public AttendanceLogDTO convertToDTO(AttendanceLog log) {
+        String studentNumber = "N/A";
+        
+        // Try to find student number from RFID tag
+        if (log.getRfidTagId() != null) {
+            Optional<Student> student = studentRepository.findByRfidTagId(log.getRfidTagId());
+            if (student.isPresent()) {
+                studentNumber = student.get().getStudentNumber();
+            }
+        } 
+        // Try to find student number from fingerprint ID
+        else if (log.getFingerprintId() != null) {
+            Optional<Student> student = studentRepository.findByFingerprintId(log.getFingerprintId());
+            if (student.isPresent()) {
+                studentNumber = student.get().getStudentNumber();
+            }
+        }
+        
+        // Determine status
+        String status = log.isAccessGranted() ? "PRESENT" : "DENIED";
+        
+        return AttendanceLogDTO.builder()
+                .id(log.getId())
+                .name(log.getStudentName())
+                .studentNumber(studentNumber)
+                .timestamp(log.getScanTimestamp().format(DATE_FORMATTER))
+                .status(status)
+                .nodeId(log.getHardwareNodeId())
+                .rfidTag(log.getRfidTagId())
+                .build();
+    }
+    
+    /**
+     * Convert list of AttendanceLog objects to DTOs.
+     */
+    public List<AttendanceLogDTO> convertToDTOList(List<AttendanceLog> logs) {
+        return logs.stream()
+                .map(this::convertToDTO)
+                .collect(Collectors.toList());
     }
 
     /**

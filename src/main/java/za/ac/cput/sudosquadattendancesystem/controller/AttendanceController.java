@@ -7,19 +7,22 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import za.ac.cput.sudosquadattendancesystem.domain.AttendanceLog;
 import za.ac.cput.sudosquadattendancesystem.domain.HardwarePayload;
+import za.ac.cput.sudosquadattendancesystem.dto.AttendanceLogDTO;
 import za.ac.cput.sudosquadattendancesystem.service.IAttendanceService;
+import za.ac.cput.sudosquadattendancesystem.service.AttendanceService;
 
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/attendance")
-@CrossOrigin(origins = "*")
+@RequestMapping("/attendance")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH})
 @RequiredArgsConstructor
 public class AttendanceController {
 
     private final IAttendanceService attendanceService;
+    private final AttendanceService attendanceServiceImpl;
 
     @PostMapping("/scan")
     public ResponseEntity<AttendanceLog> processScan(@RequestBody HardwarePayload payload) {
@@ -28,47 +31,60 @@ public class AttendanceController {
     }
 
     @GetMapping("/logs")
-    public ResponseEntity<List<AttendanceLog>> getAllLogs() {
-        return ResponseEntity.ok(attendanceService.getAllLogs());
+    public ResponseEntity<List<AttendanceLogDTO>> getAllLogs() {
+        List<AttendanceLog> logs = attendanceService.getAllLogs();
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
-    // GET /api/attendance/logs/1
+    // GET /api/v1/attendance/logs/1
     @GetMapping("/logs/{id}")
-    public ResponseEntity<AttendanceLog> getLogById(@PathVariable Long id) {
+    public ResponseEntity<AttendanceLogDTO> getLogById(@PathVariable Long id) {
         AttendanceLog log = attendanceService.getLogById(id);
         if (log == null) return ResponseEntity.notFound().build();
-        return ResponseEntity.ok(log);
+        AttendanceLogDTO dto = attendanceServiceImpl.convertToDTO(log);
+        return ResponseEntity.ok(dto);
     }
 
-    // GET /api/attendance/logs/node/MAIN
+    // GET /api/v1/attendance/logs/node/MAIN
     @GetMapping("/logs/node/{nodeId}")
-    public ResponseEntity<List<AttendanceLog>> getByNodeId(@PathVariable String nodeId) {
-        return ResponseEntity.ok(attendanceService.getLogsByNodeId(nodeId));
+    public ResponseEntity<List<AttendanceLogDTO>> getByNodeId(@PathVariable String nodeId) {
+        List<AttendanceLog> logs = attendanceService.getLogsByNodeId(nodeId);
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
-    // GET /api/attendance/logs/rfid/A1B2C3D4
+    // GET /api/v1/attendance/logs/rfid/A1B2C3D4
     @GetMapping("/logs/rfid/{rfidTag}")
-    public ResponseEntity<List<AttendanceLog>> getByRfidTag(@PathVariable String rfidTag) {
-        return ResponseEntity.ok(attendanceService.getLogsByRfidTag(rfidTag));
+    public ResponseEntity<List<AttendanceLogDTO>> getByRfidTag(@PathVariable String rfidTag) {
+        List<AttendanceLog> logs = attendanceService.getLogsByRfidTag(rfidTag);
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
-    // GET /api/attendance/logs/granted   or   /api/attendance/logs/denied
+    // GET /api/v1/attendance/logs/granted or /api/v1/attendance/logs/denied
     @GetMapping("/logs/granted")
-    public ResponseEntity<List<AttendanceLog>> getGranted() {
-        return ResponseEntity.ok(attendanceService.getLogsByAccessGranted(true));
+    public ResponseEntity<List<AttendanceLogDTO>> getGranted() {
+        List<AttendanceLog> logs = attendanceService.getLogsByAccessGranted(true);
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/logs/denied")
-    public ResponseEntity<List<AttendanceLog>> getDenied() {
-        return ResponseEntity.ok(attendanceService.getLogsByAccessGranted(false));
+    public ResponseEntity<List<AttendanceLogDTO>> getDenied() {
+        List<AttendanceLog> logs = attendanceService.getLogsByAccessGranted(false);
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
-    // GET /api/attendance/logs/range?start=2026-05-01T00:00:00&end=2026-05-15T23:59:59
+    // GET /api/v1/attendance/logs/range?start=2026-05-01T00:00:00&end=2026-05-15T23:59:59
     @GetMapping("/logs/range")
-    public ResponseEntity<List<AttendanceLog>> getByDateRange(
+    public ResponseEntity<List<AttendanceLogDTO>> getByDateRange(
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime start,
             @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end) {
-        return ResponseEntity.ok(attendanceService.getLogsByDateRange(start, end));
+        List<AttendanceLog> logs = attendanceService.getLogsByDateRange(start, end);
+        List<AttendanceLogDTO> dtos = attendanceServiceImpl.convertToDTOList(logs);
+        return ResponseEntity.ok(dtos);
     }
 
     @GetMapping("/stats")
@@ -87,4 +103,5 @@ public class AttendanceController {
         return ResponseEntity.ok("Sudo-Scan backend is running OK");
     }
 }
+
 

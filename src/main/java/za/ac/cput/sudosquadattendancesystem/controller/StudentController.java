@@ -11,8 +11,8 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/students")
-@CrossOrigin(origins = "*")
+@RequestMapping("/students")
+@CrossOrigin(origins = "*", allowedHeaders = "*", methods = {RequestMethod.GET, RequestMethod.POST, RequestMethod.PUT, RequestMethod.DELETE, RequestMethod.PATCH})
 @RequiredArgsConstructor
 public class StudentController {
 
