@@ -117,7 +117,7 @@ Hardware User Experience: We steered clear of intricate biometric sensors that r
 ***This was the first phase of the system where the system commands was
 programmed and simulated using an online website named Wokwi, which supports 
 a majority of the system components which faccilitates the testing of the circuits 
-along with the commands before doing it with the real world system.***
+along with the commands before doing it with the real world system components.***
 
 ![Step 1 Photo](images/build_step1.jpg)
 
