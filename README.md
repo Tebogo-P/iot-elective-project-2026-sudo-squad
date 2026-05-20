@@ -126,7 +126,7 @@ along with the commands before doing it with the real world system components.**
 had to connect the comnponents to the breadboard, which includes (### Arduino, ESP32, fingerprint sensor, Jumper cables, RFID card, LCD and LED's). 
 The connection was done through some documented research amongst the team members, carefully follwoing the steps to avoid minor mistakes***
 
-![Component Connection](images/build_step2.jpg)
+![Component Connection](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20work%20progress%202.jpeg?raw=true)
 
 ### Step 3: [Real world command comfiguration]
 ***On this stage, this is where the real simulation happens, where we had to migrate the Wokwi commands, to Arduino IDE so we can 
