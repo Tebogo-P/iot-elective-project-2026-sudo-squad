@@ -195,7 +195,7 @@ void loop() {
 | [ RFID not working] | [configured the RFID programm] |
 | [ Arduino could not detect file directory ] | [ Had to install some library] |
 |[Data transfer USB wasn't working]|[ Used different USB ]|
-|[ ]|[ ]|
+|[ESP32 could not connect to public Wi-Fi ]|[ We had to purchase our own data on our own machine to hortsport the ESP32 ]|
 
 ---
 
