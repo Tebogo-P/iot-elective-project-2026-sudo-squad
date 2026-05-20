@@ -79,12 +79,13 @@ Hardware User Experience: We steered clear of intricate biometric sensors that r
 
 | Component | Description | Quantity | Purpose |
 |---|---|---|---|
-| [e.g. Arduino Uno] | [ATmega328P-based microcontroller board] | [1] | [ Main microcontroller] |
+| [Arduino Uno] | [ATmega328P-based microcontroller board] | [1] | [ Main microcontroller] |
 | [RFID Tag/Card] | [Passive identification tag] | [1] | [ Stores unique ID for authentication or tracking] |
 | [ESP32 Microcontroller] | [Wi-Fi + Bluetooth enabled microcontrolle] | [1] | [ Wireless connectivity] |
 | [HC-SR04 Ultrasonic Sensor] |[ Distance measuring sensor using sound waves ] | [1] | [Measures distance to objects] |
 |[Breadboard]|[Solderless prototyping board]|[1]|[Used for temporary circuit assembly]|
 |[Jumper Wires]|[Electrical connecting wires]|[Set]|[Connects components in circuits]|
+|[Touch Sensor]|[Detects physical touch or contact from a finger]|[1]|[Sense Motion]|
 
 ---
 
@@ -174,8 +175,11 @@ void loop() {
 
 | Test # | Description | Expected Result | Actual Result | Pass/Fail |
 |---|---|---|---|---|
-| 1 | [e.g. Sensor reads temperature] | [e.g. ±2°C accuracy] | [e.g. ±1.5°C] | ✅ Pass |
-| 2 | [e.g. Wi-Fi transmission] | [e.g. Every 10s] | | |
+| 1 | [ Touch sensor detects user interaction] | [ Sensor activates on touch] | [ Sensor activated immediately on touch] | ✅ Pass |
+| 2 | [ Wi-Fi module transmits data to server] | [ Data transmitted every 10 seconds|[Data successfully transmitted every 10 seconds] | [✅ Pass ] |
+|3|[RFID module detects authorized tag/card]|[Tag detected within 3 seconds]|[Tag detected within 2 seconds]|[✅ Pass]|
+|[4]|[LED indicator responds to system status]|[LED turns ON/OFF correctly]|[LED responded correctly during testing]|[✅ Pass]|
+|[5]|[Ultrasonic sensor measures object distance]|[Distance accuracy within ±3 cm]|[Distance measured within ±2 cm]|[✅ Pass]|
 
 ---
 
@@ -183,8 +187,8 @@ void loop() {
 
 | Challenge Encountered | Solution Applied |
 |---|---|
-| [e.g. Wi-Fi connection drops] | [e.g. Added reconnect logic] |
-| [e.g. Noisy sensor readings] | [e.g. Applied moving average filter] |
+| [ RFID not working] | [configured the RFID programm] |
+| [ Noisy sensor readings] | [e.g. Applied moving average filter] |
 
 ---
 
