@@ -141,7 +141,7 @@ such as RFID modules, Wi-Fi modules, sensors, and fingerprint devices.***
  which displays the card's unique ID, and be stored on the database managed by the back-end program. The back-end also serves as an intermediary for the front-end, to 
  communicate with the database, for data retrieval, which assist the system to recognise a certain user in the future.***
 
-![Step 4 Photo](images/build_step2.jpg)
+![Step 4 Photo](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IUoT%20work%20Progress%205.jpeg?raw=true)
 
 ---
 
