@@ -121,20 +121,27 @@ along with the commands before doing it with the real world system components.**
 
 ![System command test image](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20work%20progress%204.jpeg?raw=true)
 
-### Step 2: [Step Title]
-> _Description of what was done._
+### Step 2: [Circuit Component Connection]
+***After test and command simulation, the second process was the wiring of the components, where we
+had to connect the comnponents to the breadboard, which includes (### Arduino, ESP32, fingerprint sensor, Jumper cables, RFID card, LCD and LED's). 
+The connection was done through some documented research amongst the team members, carefully follwoing the steps to avoid minor mistakes***
 
-![Step 2 Photo](images/build_step2.jpg)
+![Component Connection](images/build_step2.jpg)
 
-### Step 1: [Step Title]
-> _Description of what was done._
+### Step 3: [Real world command comfiguration]
+***On this stage, this is where the real simulation happens, where we had to migrate the Wokwi commands, to Arduino IDE so we can 
+connect/ configure the commands to the components so they can effectively communuicate with each other. The IDE consists of libraries
+to be installed which provide necessary functions and tools for communication between the Arduino/ESP32 and hardware components
+such as RFID modules, Wi-Fi modules, sensors, and fingerprint devices.***
 
-![Step 1 Photo](images/build_step1.jpg)
+![Step 3 Photo](images/build_step1.jpg)
 
-### Step 2: [Step Title]
-> _Description of what was done._
+### Step 4: [Client-Server]
+***This was the process of connecting the front-end with the back-end of the system.The front-end is responsible for displaying the RFID card after being taped
+ which displays the card's unique ID, and be stored on the database managed by the back-end program. The back-end also serves as an intermediary for the front-end, to 
+ communicate with the database, for data retrieval, which assist the system to recognise a certain user in the future.***
 
-![Step 2 Photo](images/build_step2.jpg)
+![Step 4 Photo](images/build_step2.jpg)
 
 ---
 
