@@ -79,10 +79,12 @@ Hardware User Experience: We steered clear of intricate biometric sensors that r
 
 | Component | Description | Quantity | Purpose |
 |---|---|---|---|
-| [e.g. Arduino Uno] | [Brief description] | [1] | [e.g. Main microcontroller] |
-| [e.g. DHT11 Sensor] | [Brief description] | [1] | [e.g. Temperature & humidity sensing] |
-| [e.g. ESP8266 Wi-Fi Module] | [Brief description] | [1] | [e.g. Wireless connectivity] |
-| [Add more rows as needed] | | | |
+| [e.g. Arduino Uno] | [ATmega328P-based microcontroller board] | [1] | [ Main microcontroller] |
+| [RFID Tag/Card] | [Passive identification tag] | [1] | [ Stores unique ID for authentication or tracking] |
+| [ESP32 Microcontroller] | [Wi-Fi + Bluetooth enabled microcontrolle] | [1] | [ Wireless connectivity] |
+| [HC-SR04 Ultrasonic Sensor] |[ Distance measuring sensor using sound waves ] | [1] | [Measures distance to objects] |
+|[Breadboard]|[Solderless prototyping board]|[1]|[Used for temporary circuit assembly]|
+|[Jumper Wires]|[Electrical connecting wires]|[Set]|[Connects components in circuits]|
 
 ---
 
@@ -90,10 +92,10 @@ Hardware User Experience: We steered clear of intricate biometric sensors that r
 
 | Tool / Platform | Purpose |
 |---|---|
-| [e.g. Arduino IDE] | [Firmware development] |
-| [e.g. MQTT / Node-RED] | [Data communication / dashboard] |
-| [e.g. GitHub] | [Version control & documentation] |
-| [e.g. Fritzing] | [Circuit design] |
+| [ Arduino IDE] | [Firmware development] |
+| [ Wokwi] | [Components command simulation test] |
+| [ GitHub] | [Version control & documentation] |
+| [ Fritzing] | [Circuit design] |
 
 ---
 
