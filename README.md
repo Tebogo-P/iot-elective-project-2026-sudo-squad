@@ -173,10 +173,6 @@ void loop() {
 | `SPI.begin();` | Starts API Protocol |
 | `rfid.PCD_Init();` | Starts the RC522 reader |
 | `Serial.println("Tap RFID Tag...");` | Prompts user to tap card |
-| `Serial.println("Tap RFID Tag...");` | Prompts user to tap card |
-
-
-
 
 ---
 
