@@ -66,8 +66,6 @@ The system's "Strict Exam Mode" for invigilators is crucial. The system quickly 
 
 ## 🏗️ System Architecture & Design
 
-![System Architecture Diagram](images/architecture_diagram.png)
-
 ### Design Decisions
 Microcontroller Selection: To guarantee minimal power consumption, rigorous adherence to the project brief, and extremely responsive low-level C++ sensor control, we chose the Arduino Uno R3 over a Linux-based SBC (such as a Raspberry Pi).
 
@@ -128,7 +126,7 @@ The connection was done through some documented research amongst the team member
 
 ![Component Connection](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20work%20progress%202.jpeg?raw=true)
 
-### Step 3: [Arduino IDE: Real world command comfiguration]
+### Step 3: [Arduino IDE: Real world command configuration]
 ***On this stage, this is where the real simulation happens, where we had to migrate the Wokwi commands, to Arduino IDE so we can 
 connect/ configure the commands to the components so they can effectively communuicate with each other. The IDE consists of libraries
 to be installed which provide necessary functions and tools for communication between the Arduino/ESP32 and hardware components
