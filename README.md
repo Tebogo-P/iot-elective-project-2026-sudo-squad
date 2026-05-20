@@ -128,13 +128,13 @@ The connection was done through some documented research amongst the team member
 
 ![Component Connection](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20work%20progress%202.jpeg?raw=true)
 
-### Step 3: [Real world command comfiguration]
+### Step 3: [Arduino IDE: Real world command comfiguration]
 ***On this stage, this is where the real simulation happens, where we had to migrate the Wokwi commands, to Arduino IDE so we can 
 connect/ configure the commands to the components so they can effectively communuicate with each other. The IDE consists of libraries
 to be installed which provide necessary functions and tools for communication between the Arduino/ESP32 and hardware components
 such as RFID modules, Wi-Fi modules, sensors, and fingerprint devices.***
 
-![Step 3 Photo](images/build_step1.jpg)
+![Step 3 Photo](https://github.com/Tebogo-P/iot-elective-project-2026-sudo-squad/blob/main/Work%20in%20progress%20images/IoT%20Arduino%20IDE.jpeg?raw=true)
 
 ### Step 4: [Client-Server]
 ***This was the process of connecting the front-end with the back-end of the system.The front-end is responsible for displaying the RFID card after being taped
