@@ -167,7 +167,16 @@ void loop() {
 |---|---|
 | `setup()` | Initializes hardware peripherals and serial communication |
 | `loop()` | Main execution loop |
-| `[yourFunction()]` | [Describe it] |
+| `WiFi.begin(ssid, password);` | Starts Wi-Fi connection |
+| `while (WiFi.status() != WL_CONNECTED)` | Keep checking until Wi-Fi connects |
+| `Serial.println(WiFi.localIP());` | Displays ESP32 |
+| `SPI.begin();` | Starts API Protocol |
+| `rfid.PCD_Init();` | Starts the RC522 reader |
+| `Serial.println("Tap RFID Tag...");` | Prompts user to tap card |
+| `Serial.println("Tap RFID Tag...");` | Prompts user to tap card |
+
+
+
 
 ---
 
