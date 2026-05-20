@@ -188,7 +188,9 @@ void loop() {
 | Challenge Encountered | Solution Applied |
 |---|---|
 | [ RFID not working] | [configured the RFID programm] |
-| [ Noisy sensor readings] | [e.g. Applied moving average filter] |
+| [ Arduino could not detect file directory ] | [ Had to install some library] |
+|[Data transfer USB wasn't working]|[ Used different USB ]|
+|[ ]|[ ]|
 
 ---
 
